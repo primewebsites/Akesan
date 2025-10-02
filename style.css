@@ -93,20 +93,20 @@ nav ul li a:hover {
 }
 
 /* ============================
-   HERO
+   HERO (somente texto)
    ============================ */
 .hero {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 50px;
-  padding: 80px 40px;
-  max-width: 1200px;
+  text-align: center;
+  padding: 100px 20px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
 .hero-text h1 {
-  font-size: clamp(32px, 5vw, 56px);
+  font-size: clamp(36px, 6vw, 64px);
   font-weight: 800;
   color: var(--secondary);
   margin-bottom: 20px;
@@ -115,17 +115,18 @@ nav ul li a:hover {
 
 .hero-text p {
   color: var(--muted);
-  margin-bottom: 28px;
-  font-size: 18px;
-  max-width: 500px;
+  margin-bottom: 32px;
+  font-size: 20px;
+  max-width: 650px;
 }
 
 .btn {
   display: inline-block;
-  padding: 14px 26px;
+  padding: 16px 32px;
   border-radius: var(--radius);
   font-weight: 600;
-  transition: background var(--transition), transform var(--transition);
+  font-size: 18px;
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
   cursor: pointer;
   text-decoration: none;
 }
@@ -133,25 +134,15 @@ nav ul li a:hover {
 .btn.primary {
   background: var(--accent);
   color: #fff;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
 }
 
 .btn.primary:hover {
   background: #1565c0;
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
-.hero-image {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.hero-image img {
-  max-width: 100%;
-  height: auto;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-}
 
 /* ============================
    SERVICES / CARDS
