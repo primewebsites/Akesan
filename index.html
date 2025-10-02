@@ -41,12 +41,12 @@
     <div class="hero-image">
       <img src="img/escudo.png" alt="Segurança Digital">
     </div>
-  </section>
+  </section class="fade-in">
 
   <!-- ============================
        SERVICES
        ============================ -->
-  <section class="services" id="services">
+  <section class="services fade-in" id="services">
     <h2>Nossos Serviços</h2>
     <div class="service-grid">
 
@@ -294,7 +294,7 @@
 <!-- ============================
      SOBRE NÓS
      ============================ -->
-<section class="about" id="about">
+<section class="about fade-in" id="about">
   <h2>Sobre Nós</h2>
   <div class="about-content">
     <div class="about-text">
@@ -316,14 +316,14 @@
   <!-- ============================
        CLIENTES
        ============================ -->
-  <section class="clients" id="clients">
+  <section class="clients fade-in" id="clients">
     <h2>Clientes</h2>
     <div class="clients-container">
       <div class="clients-logos">
         <img src="img/logo-sola.png" alt="Cliente 1">
         <img src="img/logo-smh.jfif" alt="Cliente 2">
-        <img src="img/logo-protege.png" alt="Cliente 3">
         <img src="img/logo-lemgruber.png" alt="Cliente 4">
+        <img src="img/logo-protege.png" alt="Cliente 3">
         <img src="img/ayres da motta.jpeg" alt="Cliente 5">
         <img src="img/logo-sao lucas.png" alt="Cliente 6">
       </div>
@@ -333,7 +333,7 @@
   <!-- ============================
        FOOTER
        ============================ -->
-  <footer class="site-footer">
+  <footer class="site-footer fade-in">
     <div class="footer-contact">
       <h3>Contate-nos</h3>
       <form class="footer-form">
@@ -360,6 +360,29 @@
 </a>
 <!-- Botão subir ao topo -->
 <button id="scrollTopBtn" title="Voltar ao topo">↑</button>
+ <!-- ============================ -->
+  <!-- SCRIPT PARA FADE-IN -->
+  <!-- ============================ -->
+  <script>
+    const faders = document.querySelectorAll('.fade-in');
+
+    const appearOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px"
+    };
+
+    const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        appearOnScroll.unobserve(entry.target);
+      });
+    }, appearOptions);
+
+    faders.forEach(fader => {
+      appearOnScroll.observe(fader);
+    });
+  </script>
 
 </body>
 </html>

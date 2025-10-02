@@ -572,3 +572,13 @@ nav ul li a:hover {
 #scrollTopBtn.show {
   opacity: 1;
 }
+.fade-in {
+  opacity: 0; /* invisível inicialmente */
+  transform: translateY(20px); /* opcional: sobe um pouco durante o fade */
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
