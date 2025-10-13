@@ -401,6 +401,9 @@ nav ul li a:hover {
   font-size: clamp(12px, 1vw, 14px);
   opacity: 0.8;
 }
+p{
+  color: #fff;
+}
 
 /* ============================
    ABOUT / SOBRE
