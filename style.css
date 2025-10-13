@@ -323,17 +323,17 @@ nav ul li a:hover {
    ============================ */
 @media (max-width: 768px) {
   .client-nav {
-    width: 16px;
-    height: 16px;
-    font-size: 10px;
+    width: 14px;
+    height: 14px;
+    font-size: 8px;
   }
 
   /* Afastar as setas do container para não sobrepor logos */
   .client-nav.prev {
-    left: -35px; /* mais distante da lista de logos */
+    left: -55px; /* mais distante da lista de logos */
   }
   .client-nav.next {
-    right: -35px; /* mais distante da lista de logos */
+    right: -55px; /* mais distante da lista de logos */
   }
 
   .clients-logos img {
