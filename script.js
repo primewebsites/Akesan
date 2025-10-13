@@ -149,3 +149,15 @@ document.addEventListener("DOMContentLoaded", () => {
   }, appearOptions);
   faders.forEach(fader => appearOnScroll.observe(fader));
 });
+nextBtn.addEventListener("click", () => {
+  const maxScroll = logosContainer.scrollWidth - container.clientWidth;
+  scrollAmount += scrollStep;
+  if(scrollAmount > maxScroll) scrollAmount = maxScroll;
+  container.scrollTo({ left: scrollAmount, behavior: "smooth" });
+});
+
+prevBtn.addEventListener("click", () => {
+  scrollAmount -= scrollStep;
+  if(scrollAmount < 0) scrollAmount = 0;
+  container.scrollTo({ left: scrollAmount, behavior: "smooth" });
+});
