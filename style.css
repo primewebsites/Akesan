@@ -323,17 +323,17 @@ nav ul li a:hover {
    ============================ */
 @media (max-width: 768px) {
   .client-nav {
-    width: 28px;
-    height: 28px;
-    font-size: 18px;
+    width: 20px;
+    height: 20px;
+    font-size: 14px;
   }
 
   /* Afastar as setas do container para não sobrepor logos */
   .client-nav.prev {
-    left: -25px; /* mais distante da lista de logos */
+    left: -35px; /* mais distante da lista de logos */
   }
   .client-nav.next {
-    right: -25px; /* mais distante da lista de logos */
+    right: -35px; /* mais distante da lista de logos */
   }
 
   .clients-logos img {
@@ -400,9 +400,6 @@ nav ul li a:hover {
   margin-top: 30px;
   font-size: clamp(12px, 1vw, 14px);
   opacity: 0.8;
-}
-p{
-  color: #fff;
 }
 
 /* ============================
@@ -599,10 +596,10 @@ p{
 
 @media (max-width: 768px) {
   .client-nav.prev {
-    left: -5px;
+    left: -15px;
   }
   .client-nav.next {
-    right: -5px;
+    right: -15px;
   }
   .clients {
     padding: 80px 20px;
