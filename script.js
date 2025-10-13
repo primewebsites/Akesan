@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   /* =========================
-     CLIENTES - Scroll Lateral com Limite
-     ========================= */
+     CLIENTES - Scroll Lateral 2 logos por clique
+  ========================= */
   const clientSections = document.querySelectorAll('.clients-wrapper');
 
   clientSections.forEach(wrapper => {
@@ -10,21 +10,28 @@ document.addEventListener("DOMContentLoaded", () => {
     const logosContainer = wrapper.querySelector('.clients-logos');
     const prevBtn = wrapper.querySelector('.client-nav.prev');
     const nextBtn = wrapper.querySelector('.client-nav.next');
-    const scrollStep = 300;
     let scrollAmount = 0;
 
     if (container && logosContainer && prevBtn && nextBtn) {
+      // Calcula a largura de um logo incluindo gap
+      const firstLogo = logosContainer.children[0];
+      const logoStyle = window.getComputedStyle(firstLogo);
+      const logoGap = parseInt(window.getComputedStyle(logosContainer).gap) || 50;
+      const logoWidth = firstLogo.offsetWidth + logoGap;
+
+      // Scroll de 2 logos por clique
+      const scrollStep = logoWidth * 2;
       const maxScroll = logosContainer.scrollWidth - container.clientWidth;
 
       nextBtn.addEventListener("click", () => {
         scrollAmount += scrollStep;
-        if (scrollAmount > maxScroll) scrollAmount = maxScroll;
+        if(scrollAmount > maxScroll) scrollAmount = maxScroll;
         container.scrollTo({ left: scrollAmount, behavior: "smooth" });
       });
 
       prevBtn.addEventListener("click", () => {
         scrollAmount -= scrollStep;
-        if (scrollAmount < 0) scrollAmount = 0;
+        if(scrollAmount < 0) scrollAmount = 0;
         container.scrollTo({ left: scrollAmount, behavior: "smooth" });
       });
     } else {
@@ -39,11 +46,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (scrollBtn) {
     const toggleScrollBtn = () => {
-      if (window.scrollY > 50) {
-        scrollBtn.classList.add("show");
-      } else {
-        scrollBtn.classList.remove("show");
-      }
+      if (window.scrollY > 50) scrollBtn.classList.add("show");
+      else scrollBtn.classList.remove("show");
     };
 
     toggleScrollBtn();
