@@ -1,21 +1,27 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", () => {
+
   /* =========================
      CLIENTES - Scroll Lateral
      ========================= */
-  const clientContainer = document.querySelector('.clients-logos');
-  const prevBtn = document.querySelector('.client-nav.prev');
-  const nextBtn = document.querySelector('.client-nav.next');
-  const scrollStep = 200; // pixels por clique
+  const clientSections = document.querySelectorAll('.clients-wrapper');
 
-  if (nextBtn && prevBtn && clientContainer) {
-    nextBtn.addEventListener('click', () => {
-      clientContainer.scrollBy({ left: scrollStep, behavior: 'smooth' });
-    });
+  clientSections.forEach(wrapper => {
+    const container = wrapper.querySelector('.clients-logos');
+    const prevBtn = wrapper.querySelector('.client-nav.prev');
+    const nextBtn = wrapper.querySelector('.client-nav.next');
+    const scrollStep = 300;
 
-    prevBtn.addEventListener('click', () => {
-      clientContainer.scrollBy({ left: -scrollStep, behavior: 'smooth' });
-    });
-  }
+    if (container && prevBtn && nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        container.scrollBy({ left: scrollStep, behavior: 'smooth' });
+      });
+      prevBtn.addEventListener('click', () => {
+        container.scrollBy({ left: -scrollStep, behavior: 'smooth' });
+      });
+    } else {
+      console.warn("⚠️ Navegação de clientes não encontrada neste wrapper.");
+    }
+  });
 
   /* =========================
      BOTÃO SUBIR AO TOPO
@@ -24,24 +30,21 @@ document.addEventListener("DOMContentLoaded", function() {
 
   if (scrollBtn) {
     const toggleScrollBtn = () => {
-      if (window.scrollY > 50) { // mais sensível que antes
+      if (window.scrollY > 50) {
         scrollBtn.classList.add("show");
       } else {
         scrollBtn.classList.remove("show");
       }
     };
 
-    // Checa visibilidade ao carregar e ao rolar
     toggleScrollBtn();
     window.addEventListener("scroll", toggleScrollBtn);
 
-    // Scroll suave ao topo
     scrollBtn.addEventListener("click", () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
   }
-});
-document.addEventListener("DOMContentLoaded", function() {
+
   /* =========================
      Lazy Load de Imagens
      ========================= */
@@ -98,7 +101,6 @@ document.addEventListener("DOMContentLoaded", function() {
      Otimização de Scroll Events
      ========================= */
   const scrollHandler = () => {
-    // Exemplo: lazy animations, header sticky, etc.
     const animatedElements = document.querySelectorAll('.animate-on-scroll');
     animatedElements.forEach(el => {
       if (el.getBoundingClientRect().top < window.innerHeight * 0.9) {
@@ -106,14 +108,13 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     });
   };
-
   window.addEventListener('scroll', throttle(scrollHandler, 100));
 
   /* =========================
      Acessibilidade e SEO Simples
      ========================= */
   document.querySelectorAll('img').forEach(img => {
-    if (!img.alt) img.alt = 'Imagem do site'; // alt padrão
+    if (!img.alt) img.alt = 'Imagem do site';
   });
 
   /* =========================
@@ -131,29 +132,20 @@ document.addEventListener("DOMContentLoaded", function() {
   preloadFonts();
 
   /* =========================
-     Outras otimizações futuras
+     Fade-In de Elementos
      ========================= */
-  // Aqui você pode adicionar funções para:
-  // - Minificar CSS/JS inline (runtime)
-  // - Compressão de imagens em base64 apenas sob demanda
-  // - Tracking de performance (LCP, FID, CLS)
-});
-const faders = document.querySelectorAll('.fade-in');
-
-const appearOptions = {
-  threshold: 0.2,
-  rootMargin: "0px 0px -50px 0px"
-};
-
-const appearOnScroll = new IntersectionObserver((entries, observer) => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting){
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
-  });
-}, appearOptions);
-
-faders.forEach(fader => {
-  appearOnScroll.observe(fader);
+  const faders = document.querySelectorAll('.fade-in');
+  const appearOptions = {
+    threshold: 0.2,
+    rootMargin: "0px 0px -50px 0px"
+  };
+  const appearOnScroll = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, appearOptions);
+  faders.forEach(fader => appearOnScroll.observe(fader));
 });
