@@ -318,6 +318,29 @@ nav ul li a:hover {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+/* ============================
+   NAVEGAÇÃO CLIENTES - ajuste para celular
+   ============================ */
+@media (max-width: 768px) {
+  .client-nav {
+    width: 28px;
+    height: 28px;
+    font-size: 18px;
+  }
+
+  /* Afastar as setas do container para não sobrepor logos */
+  .client-nav.prev {
+    left: -25px; /* mais distante da lista de logos */
+  }
+  .client-nav.next {
+    right: -25px; /* mais distante da lista de logos */
+  }
+
+  .clients-logos img {
+    max-height: 60px;
+    max-width: 100px;
+  }
+}
 
 /* ============================
    FOOTER
