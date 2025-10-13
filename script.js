@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const logoWidth = firstLogo.offsetWidth + logoGap;
 
       // Scroll de 2 logos por clique
-      const scrollStep = logoWidth * 2;
+      const scrollStep = logoWidth * 4;
       const maxScroll = logosContainer.scrollWidth - container.clientWidth;
 
       nextBtn.addEventListener("click", () => {
