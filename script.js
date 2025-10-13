@@ -1,22 +1,31 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   /* =========================
-     CLIENTES - Scroll Lateral
+     CLIENTES - Scroll Lateral com Limite
      ========================= */
   const clientSections = document.querySelectorAll('.clients-wrapper');
 
   clientSections.forEach(wrapper => {
-    const container = wrapper.querySelector('.clients-logos');
+    const container = wrapper.querySelector('.clients-container');
+    const logosContainer = wrapper.querySelector('.clients-logos');
     const prevBtn = wrapper.querySelector('.client-nav.prev');
     const nextBtn = wrapper.querySelector('.client-nav.next');
     const scrollStep = 300;
+    let scrollAmount = 0;
 
-    if (container && prevBtn && nextBtn) {
-      nextBtn.addEventListener('click', () => {
-        container.scrollBy({ left: scrollStep, behavior: 'smooth' });
+    if (container && logosContainer && prevBtn && nextBtn) {
+      const maxScroll = logosContainer.scrollWidth - container.clientWidth;
+
+      nextBtn.addEventListener("click", () => {
+        scrollAmount += scrollStep;
+        if (scrollAmount > maxScroll) scrollAmount = maxScroll;
+        container.scrollTo({ left: scrollAmount, behavior: "smooth" });
       });
-      prevBtn.addEventListener('click', () => {
-        container.scrollBy({ left: -scrollStep, behavior: 'smooth' });
+
+      prevBtn.addEventListener("click", () => {
+        scrollAmount -= scrollStep;
+        if (scrollAmount < 0) scrollAmount = 0;
+        container.scrollTo({ left: scrollAmount, behavior: "smooth" });
       });
     } else {
       console.warn("⚠️ Navegação de clientes não encontrada neste wrapper.");
@@ -25,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* =========================
      BOTÃO SUBIR AO TOPO
-     ========================= */
+  ========================= */
   const scrollBtn = document.getElementById("scrollTopBtn");
 
   if (scrollBtn) {
@@ -47,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* =========================
      Lazy Load de Imagens
-     ========================= */
+  ========================= */
   const lazyImages = document.querySelectorAll('img[data-src]');
   const lazyObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
@@ -64,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* =========================
      Scroll Suave para Âncoras
-     ========================= */
+  ========================= */
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       e.preventDefault();
@@ -75,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* =========================
      Debounce/Throttle Helper
-     ========================= */
+  ========================= */
   const throttle = (func, limit) => {
     let lastFunc;
     let lastRan;
@@ -99,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* =========================
      Otimização de Scroll Events
-     ========================= */
+  ========================= */
   const scrollHandler = () => {
     const animatedElements = document.querySelectorAll('.animate-on-scroll');
     animatedElements.forEach(el => {
@@ -112,14 +121,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* =========================
      Acessibilidade e SEO Simples
-     ========================= */
+  ========================= */
   document.querySelectorAll('img').forEach(img => {
     if (!img.alt) img.alt = 'Imagem do site';
   });
 
   /* =========================
      Pré-carregamento de fontes críticas
-     ========================= */
+  ========================= */
   const preloadFonts = () => {
     const link = document.createElement('link');
     link.rel = 'preload';
@@ -133,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* =========================
      Fade-In de Elementos
-     ========================= */
+  ========================= */
   const faders = document.querySelectorAll('.fade-in');
   const appearOptions = {
     threshold: 0.2,
@@ -148,16 +157,4 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }, appearOptions);
   faders.forEach(fader => appearOnScroll.observe(fader));
-});
-nextBtn.addEventListener("click", () => {
-  const maxScroll = logosContainer.scrollWidth - container.clientWidth;
-  scrollAmount += scrollStep;
-  if(scrollAmount > maxScroll) scrollAmount = maxScroll;
-  container.scrollTo({ left: scrollAmount, behavior: "smooth" });
-});
-
-prevBtn.addEventListener("click", () => {
-  scrollAmount -= scrollStep;
-  if(scrollAmount < 0) scrollAmount = 0;
-  container.scrollTo({ left: scrollAmount, behavior: "smooth" });
 });
