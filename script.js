@@ -39,6 +39,25 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+document.addEventListener("scroll", () => {
+  const section = document.querySelector(".transformation-section");
+  const sectionPosition = section.getBoundingClientRect().top;
+  const windowHeight = window.innerHeight;
+
+  if (sectionPosition < windowHeight - 100) {
+    section.classList.add("visible");
+  }
+});
+
+
+const logosContainer = document.querySelector('.clients-logos');
+
+// Duplica os logos para criar efeito de loop contínuo
+logosContainer.innerHTML += logosContainer.innerHTML;
+
+// Adiciona a classe que anima
+logosContainer.classList.add('scroll');
+
   /* =========================
      BOTÃO SUBIR AO TOPO
   ========================= */
@@ -162,3 +181,28 @@ document.addEventListener("DOMContentLoaded", () => {
   }, appearOptions);
   faders.forEach(fader => appearOnScroll.observe(fader));
 });
+document.addEventListener("DOMContentLoaded", () => {
+  // Seleciona todos os itens de FAQ
+  const faqItems = document.querySelectorAll(".faq-item");
+
+  faqItems.forEach(item => {
+    const question = item.querySelector(".faq-question");
+
+    question.addEventListener("click", () => {
+      // Alterna classe 'active' no item clicado
+      item.classList.toggle("active");
+
+      // Fecha os outros itens (opcional: se quiser apenas um aberto por vez)
+      faqItems.forEach(otherItem => {
+        if (otherItem !== item) {
+          otherItem.classList.remove("active");
+        }
+      });
+    });
+  });
+});
+
+  document.getElementById("back-to-top").addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
