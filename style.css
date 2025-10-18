@@ -1064,3 +1064,161 @@ nav ul li a:hover {
   line-height: 1.5;
 }
 
+/* ============================
+   RESPONSIVIDADE FINAL
+============================ */
+
+/* Telas muito pequenas (320px - smartphones pequenos) */
+@media (max-width: 360px) {
+  body {
+    font-size: 14px;
+  }
+
+  header {
+    padding: 10px 15px;
+  }
+
+  .logo {
+    font-size: 16px;
+  }
+
+  .logo img {
+    width: 28px;
+    height: 28px;
+  }
+
+  nav ul {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+
+  .hero {
+    padding: 40px 15px;
+    min-height: 500px;
+  }
+
+  .hero-text h1 {
+    font-size: clamp(24px, 7vw, 32px);
+  }
+
+  .hero-text p {
+    font-size: clamp(12px, 4vw, 16px);
+  }
+
+  .services {
+    padding: 50px 15px;
+  }
+
+  .service-grid {
+    gap: 12px;
+  }
+
+  .about-content {
+    gap: 20px;
+  }
+
+  .about-text {
+    font-size: clamp(13px, 4vw, 15px);
+  }
+
+  .about-image img {
+    max-width: 85%;
+  }
+
+  .clients {
+    padding: 60px 15px;
+  }
+
+  .clients-logos img {
+    max-height: 50px;
+    max-width: 90px;
+  }
+
+  .faq {
+    padding: 60px 15px;
+  }
+
+  .faq h2 {
+    font-size: 1.8rem;
+  }
+
+  .faq .section-subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+  }
+
+  #scrollTopBtn {
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+  }
+
+  .whatsapp-button {
+    width: 40px;
+    height: 40px;
+    bottom: 8px;
+    right: 8px;
+  }
+
+  .whatsapp-button img {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+/* Telas grandes (>1600px) */
+@media (min-width: 1600px) {
+  .hero {
+    padding: 160px 40px;
+    min-height: 800px;
+  }
+
+  .services {
+    padding: 120px 60px;
+  }
+
+  .service-grid {
+    gap: 40px;
+    max-width: 1400px;
+  }
+
+  .about {
+    padding: 160px 60px;
+  }
+
+  .about-content {
+    gap: 80px;
+  }
+
+  .clients {
+    padding: 160px 60px;
+  }
+}
+
+/* Garantindo imagens 100% fluidas e mantendo proporções */
+img, .hero-bg, .about-image img, .clients-logos img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Garantindo textos e grids fluidos */
+.container, .service-grid, .about-content {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Ajuste geral de paddings para telas pequenas */
+@media (max-width: 768px) {
+  header, .services, .transformation-section, .about, .clients, .faq, .site-footer {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
