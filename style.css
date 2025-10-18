@@ -1222,3 +1222,50 @@ img, .hero-bg, .about-image img, .clients-logos img {
     padding-right: 15px;
   }
 }
+/* ============================
+   FOOTER - ajustes mobile
+============================ */
+@media (max-width: 768px) {
+  .footer-bottom {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 15px; /* espaço maior entre os blocos */
+  }
+
+  .footer-left,
+  .footer-right {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* espaço entre linhas de texto */
+  }
+
+  .footer-left p,
+  .footer-right p {
+    font-size: 14px; /* aumenta legibilidade */
+    margin: 6px 0;
+  }
+
+  .footer-socials {
+    position: static; /* deixa as redes sociais abaixo do conteúdo */
+    transform: none;
+    margin-top: 20px; /* separação do restante */
+    justify-content: center;
+  }
+}
+
+/* Para telas ainda menores (até 480px) */
+@media (max-width: 480px) {
+  .footer-left p,
+  .footer-right p {
+    font-size: 12px; /* evita texto muito grande */
+  }
+
+  .footer-bottom {
+    gap: 12px;
+  }
+
+  .footer-socials {
+    gap: 12px; /* reduz o espaço entre ícones */
+  }
+}
